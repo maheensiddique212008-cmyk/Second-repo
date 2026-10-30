@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{margin: 0px; padding: 0px;}
+    body{
+        background: linear-gradient(rgb(30, 58, 77) , rgb(15, 46, 54) , rgb(29, 70, 80));
+        height: 320vh;
+    }
+    .container{
+        height: 2000px;
+        width: 1280px;
+        background-color: rgba(27, 41, 53, 0.9);
+        border-radius: 20px;
+        position: absolute;
+        top: 50px;
+        left: 30px;
+    }
+    h1{
+        color: rgb(102, 188, 209);
+        position: absolute;
+        top: 20px;
+        left: 360px;
+        font-size: 60px;
+        font-weight: 700px;
+        font-family: sans-serif;
+        align-items: center ;
+        gap: 20px;
+        text-shadow: 0px 0px 10px rgb(50, 113, 150);
+    }
+    .subtitle{
+        color: gray;  
+        position: absolute;
+        top: 110px;
+        left: 440px;
+        font-size: 25px;
+        font-family: sans-serif;
+    }
+    .ab{
+        width: 1200px;
+        height: 3px;
+        background-color: rgb(24, 67, 117);
+        position: absolute;
+        top: 170px;
+        left: 40px;
+        border: none;
+    }
+    main{
+        height: 850px;
+        width: 1200px;
+        background-color:  rgba(43, 63, 83, 0.9);
+        position: absolute;
+        top: 200px;
+        left: 40px;
+        border-radius: 40px;
+    }
+    .stopwatch-container{
+        height: 300px;
+        width: 1100px;
+        background-color: rgb(19, 25, 36);
+        position: absolute;
+        top: 50px;
+        left: 45px;
+        border-radius: 10px;
+        border: 2px blue solid;
+    }
+    .stopwatch-container:hover{
+
+    }
+    .time-display{
+        height: 130px;
+        width: 150px;
+        background-color: rgb(3, 12, 39);
+        position: absolute;
+        left: 90px;
+        top: 30px;
+        border-radius: 20px;
+    }
+    .time-section{
+        height: 100px;
+        width: 150px;
+        background-color: rgb(3, 12, 39);
+        border-radius: 20px;
+    }
+    .time-unit{
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+    }
+    .time1-value{
+        color:  rgb(102, 188, 209);
+        font-size: 80px;
+        text-align: center;
+        font-weight: 900; 
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px rgb(50, 113, 150);
+        
+    }
+    .time2-label{
+        color: gray;
+        position: absolute;
+        top: 150px;
+        left: 35px;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .time3-separator{
+        font-weight: 700;
+        font-family: sans-serif;
+        color: rgb(102, 188, 209);
+        font-size: 120px;
+        position: absolute;
+        top: -10px;
+        left: 160px;
+    }
+    .time4-unit{
+        height: 130px;
+        width: 150px;
+        background-color: rgb(3, 12, 39);
+        position: absolute;
+        top: 0px;
+        left: 220px;
+        border-radius: 20px;
+    }
+    .time13-value{
+        color:  rgb(102, 188, 209);
+        font-size: 80px;
+        text-align: center;
+        font-weight: 900; 
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px rgb(50, 113, 150);
+    
+    }
+    .time14-label{
+        color: gray;
+        position: absolute;
+        top: 150px;
+        left: 25px;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .time5-separator{
+        font-weight: 700;
+        font-family: sans-serif;
+        color: rgb(102, 188, 209);
+        font-size: 120px;
+        position: absolute;
+        top: -10px;
+        left: 390px; 
+    }
+    .time6-unit{
+        height: 130px;
+        width: 150px;
+        background-color: rgb(3, 12, 39);
+        position: absolute;
+        top: 0px;
+        left: 450px;
+        border-radius: 20px;
+    }
+    .time7-value{
+        color:  rgb(102, 188, 209);
+        font-size: 80px;
+        text-align: center;
+        font-weight: 900; 
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px rgb(50, 113, 150);
+    
+    }
+    .time8-label{
+        color: gray;
+        position: absolute;
+        top: 150px;
+        left: 18px;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .time9-separator{
+        font-weight: 700;
+        font-family: sans-serif;
+        color: rgb(102, 188, 209);
+        font-size: 120px;
+        position: absolute;
+        top: -10px;
+        left: 630px; 
+    }
+    .time10-unit{
+        height: 130px;
+        width: 200px;
+        background-color: rgb(3, 12, 39);
+        position: absolute;
+        top: 0px;
+        left: 700px;
+        border-radius: 20px;
+    }
+    .time11-value{
+        color: orangered;
+        font-size: 80px;
+        text-align: center;
+        font-weight: 900; 
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px orange; 
+    }
+    .time12-label{
+        color: gray;
+        position: absolute;
+        top: 150px;
+        left: 14px;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .total-time{
+        color: gray;    
+       position: absolute;
+       top: 210px;
+       left: 310px;
+       display: flex;
+       align-items: center;
+       font-size: 30px;
+    } 
+    span{
+        color: rgb(102, 188, 209);
+        
+    }
+    .controls{
+        height: 60px;
+        width: 200px;
+        position: absolute;
+        top: 350px;
+        left: 100px;
+        border-radius: 20px;
+        color: white;
+        font-size: 30px;
+
+    }
+    .btn start-btn{
+        height: 60px;
+        width: 200px;
+        background: linear-gradient( rgb(12, 199, 183) , rgb(8, 177, 106) , rgb(8, 185, 8));
+    }
+    #startBtn{
+        height: 60px;
+        width: 200px;
+        background: linear-gradient( rgb(12, 199, 183) , rgb(8, 177, 106) , rgb(8, 185, 8));
+        font-size: 30px;
+        color: white;
+        font-size: 30px;
+        border-radius: 20px;
+        
+    }
+    #pauseBtn{
+        height: 60px;
+        width: 200px;
+        background: linear-gradient(50deg , rgb(117, 90, 55) , rgb(124, 102, 73) , rgb(190, 161, 123));
+        font-size: 30px;
+        color: gray;
+        position: absolute;
+        top: 0px;
+        left: 230px;
+        border-radius: 20px;
+    }
+    #resumeBtn{
+        height: 60px;
+        width: 200px;
+        background: linear-gradient(90deg , rgb(73, 53, 92) , rgb(73, 34, 99) , rgb(55, 5, 85));
+        font-size: 30px;
+        color: gray;
+        border-radius: 20px;
+        position: absolute;
+        top: 0px;
+        left: 450px;
+    }
+    #resetBtn{
+        height: 60px;
+        width: 200px;
+        background: linear-gradient(90deg , rgb(226, 100, 142) , rgb(230, 51, 51) , rgb(255, 81, 0));
+        font-size: 30px;
+        color: white;
+        border-radius: 20px;
+        position: absolute;
+        top: 0px;
+        left: 680px;
+    }
+    .additional-controls{
+        position: absolute;
+        top: 450px;
+        left: 270px;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+    }
+    #lapBtn{
+        height: 60px;
+        width: 250px;
+        background: linear-gradient(90deg , rgb(62, 172, 199) , rgb(32, 148, 177) , rgb(8, 174, 216));
+        font-size: 30px;
+        color: gray;
+        border-radius: 20px;
+    }
+    #clearLapsBtn{
+        height: 60px;
+        width: 250px;
+        background: linear-gradient(90deg , rgb(143, 98, 31) , rgb(163, 115, 27) , rgb(255, 201, 22));
+        font-size: 30px;
+        color: gray;
+        border-radius: 20px;
+
+    }
+    .lap-times-container{
+        height: 200px;
+        width: 1100px;
+        background-color:rgb(19, 25, 36);
+        position: absolute;
+        top: 550px;
+        border-radius: 20px;
+
+    }
+    h3{
+        font-size: 30px;
+        color: rgb(102, 188, 209);
+        position: absolute;
+        left: 40px;
+        top: 30px;
+        font-weight: 700;
+        font-family: sans-serif;
+    }
+    #lapTimes{
+        position: absolute;    
+        top: 100px;
+        left: 450px;
+        
+    }
+    .empty-laps{
+        color: gray;
+        font-size: 25px;
+
+    }
+    .stats{
+       
+    }
+    .stat1-card{
+        height: 130px;
+        width: 380px;
+        background-color: rgba(43, 63, 83, 0.9);
+        position: absolute;
+        top: 890px;
+        left: 10px;
+        border-radius: 20px;
+        border-top: 8px rgb(8, 174, 216) solid;      
+    }
+    #lapCount{
+        color: white;
+        font-size: 50px;
+        font-weight: 700;
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px white;
+        position: absolute;
+        top: 20px;
+        left: 170px;
+    }
+    .stat-3label{
+        font-size: 25px;
+        color: gray;
+        position: absolute;
+        top: 80px;
+        left: 130px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .stat4-card{
+        height: 130px;
+        width: 380px;
+        background-color: rgba(43, 63, 83, 0.9);
+        position: absolute;
+        top: 890px;
+        left: 410px;
+        border-radius: 20px; 
+        border-top:  8px greenyellow  solid;
+    }
+    #fastestLap{
+        color: white;
+        font-size: 50px;
+        font-weight: 700;
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px white;
+        position: absolute;
+        top: 20px;
+        left: 100px; 
+    }
+    .stat6-label{
+        font-size: 25px;
+        color: gray;
+        position: absolute;
+        top: 80px;
+        left: 130px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+    .stat7-card{
+        height: 130px;
+        width: 380px;
+        background-color: rgba(43, 63, 83, 0.9);
+        position: absolute;
+        top: 890px;
+        right: 10px;
+        border-radius: 20px;
+        border-top: 8px darkred solid;
+    }
+    .stat9-label{
+        font-size: 25px;
+        color: gray;
+        position: absolute;
+        top: 80px;
+        left: 130px;
+        font-family: sans-serif;
+        font-weight: 700;
+    }
+   
+    #slowestLap{
+        color: white;
+        font-size: 50px;
+        font-weight: 700;
+        font-family: sans-serif;
+        text-shadow: 0px 0px 10px white;
+        position: absolute;
+        top: 20px;
+        left: 100px;
+    }
+    .instructions1{
+        height: 640px;
+        width: 1200px;
+        background-color: rgb(19, 25, 36);
+        position: absolute;
+        top: 1070px;
+        left: 10px;
+        border-radius: 30px;
+    }
+    h2{
+        font-size: 40px;
+        color: rgb(8, 174, 216);
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-weight: 700;
+        font-family: sans-serif;
+    }
+    .instruction2-grid{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 100px;
+        left: 40px;
+        border-radius: 20px;
+    }
+    .instruction3{
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(5, 112, 68) , rgb(7, 146, 125) , rgb(27, 244, 63));
+        border-radius: 50px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    .instruction4-icon {
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+    #ab{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 100px;
+        left: 20px;
+    }
+    p{
+        color: gray;
+        font-size: 20px;
+        position: absolute;
+        top: 150px;
+        left: 20px;
+    }
+    .instruction6{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 0px;
+        left: 385px;
+        border-radius: 20px; 
+    }
+    .instruction7-icon{ 
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(227, 169, 103) , rgb(231, 172, 134) , rgb(124, 84, 21));
+        color: white;
+        border-radius: 50px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 40px;
+        text-align: center;
+        align-items: flex-end;
+    } 
+    .fas8{
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+    #ac{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 120px;
+        left: 20px; 
+    }
+    .instruction9{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 0px;
+        left: 770px;
+        border-radius: 20px;
+    }
+    .instruction10-icon{
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(156, 74, 179) , rgb(100, 35, 140) , rgb(97, 28, 140));
+        color: white;
+        border-radius: 50px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 40px;
+        text-align: center;
+        align-items: flex-end;
+    }
+    #ad{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 120px;
+        left: 20px;   
+    }
+    .fas11{
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+    .instruction12{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 250px;
+        left: 0px;
+        border-radius: 20px;
+    }
+    .instruction13-icon{
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(214, 73, 120) , rgb(197, 17, 71) , rgb(241, 57, 25) , orange);
+        color: white;
+        border-radius: 100%;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    .fas14{
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+    #ae{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 120px;
+        left: 20px;  
+    }
+    .instruction15{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 250px;
+        left: 385px;
+        border-radius: 20px;
+    }
+    .instruction16-icon{
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(99, 193, 219) , rgb(76, 218, 221) , rgb(57, 189, 219));
+        color: white;
+        border-radius: 100%;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .fas17{
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px; 
+    }
+    #af{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 120px;
+        left: 20px;   
+    }
+    .instruction18{
+        height: 200px;
+        width: 350px;
+        background-color: rgba(42, 57, 71, 0.9);
+        position: absolute;
+        top: 250px;
+        left: 770px;
+        border-radius: 20px;
+    }
+    .instruction19-icon{
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(95deg , rgb(245, 57, 0) , rgb(197, 152, 74) , rgb(241, 205, 0));
+        color: white;
+        border-radius: 100%;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 40px;
+        text-align: center;
+        align-items: flex-end;  
+    }
+    .fas20{
+        font-size: 40px;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+    #ag{
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 120px;
+        left: 20px; 
+    }
+    footer{
+        border-top: 3px solid rgb(26, 87, 137);
+        position: absolute;
+        top: 1950px;
+        left: 40px;
+        width: 1200px;
+    }
+    h6{
+        position: absolute;
+        top: -140px;
+        left: 300px;
+        width: 600px;
+
+    }
+</style>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-stopwatch"></i> Precision Stopwatch</h1>
+            <p class="subtitle">High-precision timer with millisecond accuracy</p>
+            <hr class="ab">
+        </header>
+
+        <main>
+            <div class="stopwatch-container">
+                <div class="time-display">
+                    <div class="time-section">
+                        <div class="time-unit">
+                            <div class="time1-value" id="hours">00</div>
+                            <div class="time2-label">Hours</div>
+                        </div>
+                        <div class="time3-separator">:</div>
+                        <div class="time4-unit">
+                            <div class="time13-value" id="minutes">00</div>
+                            <div class="time14-label">Minutes</div>
+                        </div>
+                        <div class="time5-separator">:</div>
+                        <div class="time6-unit">
+                            <div class="time7-value" id="seconds">00</div>
+                            <div class="time8-label">Seconds</div>
+                        </div>
+                        <div class="time9-separator">:</div>
+                        <div class="time10-unit milliseconds">
+                            <div class="time11-value" id="milliseconds">000</div>
+                            <div class="time12-label">Milliseconds</div>
+                        </div>
+                    </div>
+                    
+                    <div class="total-time" id="totalTime">
+                        Total: <span>00:00:00.000</span>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn start-btn" id="startBtn">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="btn pause-btn" id="pauseBtn" disabled>
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="btn resume-btn" id="resumeBtn" disabled>
+                        <i class="fas fa-redo"></i> Resume
+                    </button>
+                    <button class="btn reset-btn" id="resetBtn">
+                        <i class="fas fa-stop"></i> Reset
+                    </button>
+                </div>
+
+                <div class="additional-controls">
+                    <button class="btn lap-btn" id="lapBtn">
+                        <i class="fas fa-flag"></i> Lap Time
+                    </button>
+                    <button class="btn clear-laps-btn" id="clearLapsBtn">
+                        <i class="fas fa-trash"></i> Clear Laps
+                    </button>
+                </div>
+
+                <div class="lap-times-container">
+                    <h3><i class="fas fa-list-ol"></i> Lap Times</h3>
+                    <div class="lap-times" id="lapTimes">
+                        <div class="empty-laps"> <i>No lap times recorded yet</i> </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat1-card">
+                    <div class="stat2-value" id="lapCount">0</div>
+                    <div class="stat-3label">Lap Count</div>
+                </div>
+                <div class="stat4-card">
+                    <div class="stat5-value" id="fastestLap">--:--:--.---</div>
+                    <div class="stat6-label">Fastest Lap</div>
+                </div>
+                <div class="stat7-card">
+                    <div class="stat8-value" id="slowestLap">--:--:--.---</div>
+                    <div class="stat9-label">Slowest Lap</div>
+                </div>
+            </div>
+
+            <div class="instructions1">
+                <h2><i class="fas fa-info-circle"></i> How to Use</h2>
+                <div class="instruction2-grid">
+                    <div class="instruction3">
+                        <div class="instruction4-icon start">
+                            <i class="fas5 fa-play"></i>
+                        </div>
+                        <h3 id="ab">Start</h3>
+                        <p>Begin the stopwatch timer. Click again to continue from current time.</p>
+                    </div>
+                    <div class="instruction6">
+                        <div class="instruction7-icon pause">
+                            <i class="fas8 fa-pause"></i>
+                        </div>
+                        <h3 id="ac">Pause</h3>
+                        <p>Temporarily stop the timer without resetting the time.</p>
+                    </div>
+                    <div class="instruction9">
+                        <div class="instruction10-icon resume">
+                            <i class="fas11 fa-redo"></i>
+                        </div>
+                        <h3 id="ad">Resume</h3>
+                        <p>Continue timing from where you paused.</p>
+                    </div>
+                    <div class="instruction12">
+                        <div class="instruction13-icon reset">
+                            <i class="fas14 fa-stop"></i>
+                        </div>
+                        <h3 id="ae">Reset</h3>
+                        <p>Reset the timer to zero and clear all lap times.</p>
+                    </div>
+                    <div class="instruction15">
+                        <div class="instruction16-icon lap">
+                            <i class="fas17 fa-flag"></i>
+                        </div>
+                        <h3 id="af">Lap Time</h3>
+                        <p>Record the current time while the stopwatch continues running.</p>
+                    </div>
+                    <div class="instruction18">
+                        <div class="instruction19-icon keyboard">
+                            <i class="fas20 fa-keyboard"></i>
+                        </div>
+                        <h3 id="ag">Keyboard Shortcuts</h3>
+                        <p id="you"><strong>Space</strong>: Start/Pause • <strong>L</strong>: Lap • <strong>R</strong>: Reset</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+           <h6> <p>Precision Stopwatch &copy; <span id="currentYear">2023</span> | Click on the time display to start/stop</p></h6>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <script src="script.js">// DOM Elements
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        const millisecondsElement = document.getElementById('milliseconds');
+        const totalTimeElement = document.getElementById('totalTime').querySelector('span');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resumeBtn = document.getElementById('resumeBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const lapBtn = document.getElementById('lapBtn');
+        const clearLapsBtn = document.getElementById('clearLapsBtn');
+        const lapTimesElement = document.getElementById('lapTimes');
+        const lapCountElement = document.getElementById('lapCount');
+        const fastestLapElement = document.getElementById('fastestLap');
+        const slowestLapElement = document.getElementById('slowestLap');
+        const currentYearElement = document.getElementById('currentYear');
+        const timeDisplay = document.querySelector('.time-display');
+        
+        // Stopwatch state
+        let isRunning = false;
+        let isPaused = false;
+        let startTime = 0;
+        let elapsedTime = 0;
+        let lastUpdateTime = 0;
+        let animationFrameId = null;
+        let laps = [];
+        let fastestLap = null;
+        let slowestLap = null;
+        let lastLapTime = 0;
+        
+        // Initialize the application
+        function init() {
+            // Set current year in footer
+            currentYearElement.textContent = new Date().getFullYear();
+            
+            // Set initial display
+            updateDisplay(0);
+            
+            // Add event listeners
+            startBtn.addEventListener('click', startStopwatch);
+            pauseBtn.addEventListener('click', pauseStopwatch);
+            resumeBtn.addEventListener('click', resumeStopwatch);
+            resetBtn.addEventListener('click', resetStopwatch);
+            lapBtn.addEventListener('click', recordLap);
+            clearLapsBtn.addEventListener('click', clearLaps);
+            
+            // Add click event to time display to start/stop
+            timeDisplay.addEventListener('click', toggleStopwatch);
+            
+            // Initialize button states
+            updateButtonStates();
+        }
+        
+        // Toggle stopwatch on time display click
+        function toggleStopwatch() {
+            if (!isRunning && !isPaused) {
+                startStopwatch();
+            } else if (isRunning) {
+                pauseStopwatch();
+            } else if (isPaused) {
+                resumeStopwatch();
+            }
+        }
+        
+        // Start the stopwatch
+        function startStopwatch() {
+            if (isRunning) return;
+            
+            if (isPaused) {
+                // Resume from paused state
+                lastUpdateTime = Date.now();
+            } else {
+                // Start fresh
+                startTime = Date.now();
+                elapsedTime = 0;
+                lastUpdateTime = startTime;
+                lastLapTime = 0;
+            }
+            
+            isRunning = true;
+            isPaused = false;
+            
+            // Start animation loop
+            animationFrameId = requestAnimationFrame(updateStopwatch);
+            
+            // Update button states
+            updateButtonStates();
+        }
+        
+        // Pause the stopwatch
+        function pauseStopwatch() {
+            if (!isRunning) return;
+            
+            isRunning = false;
+            isPaused = true;
+            
+            // Stop animation loop
+            cancelAnimationFrame(animationFrameId);
+            
+            // Update button states
+            updateButtonStates();
+        }
+        
+        // Resume the stopwatch
+        function resumeStopwatch() {
+            if (!isPaused) return;
+            
+            isRunning = true;
+            isPaused = false;
+            lastUpdateTime = Date.now();
+            
+            // Restart animation loop
+            animationFrameId = requestAnimationFrame(updateStopwatch);
+            
+            // Update button states
+            updateButtonStates();
+        }
+        
+        // Reset the stopwatch
+        function resetStopwatch() {
+            // Stop animation loop
+            cancelAnimationFrame(animationFrameId);
+            
+            // Reset state
+            isRunning = false;
+            isPaused = false;
+            elapsedTime = 0;
+            lastLapTime = 0;
+            
+            // Update display
+            updateDisplay(0);
+            
+            // Clear laps
+            laps = [];
+            fastestLap = null;
+            slowestLap = null;
+            updateLapDisplay();
+            updateLapStats();
+            
+            // Update button states
+            updateButtonStates();
+        }
+        
+        // Record a lap time
+        function recordLap() {
+            if (!isRunning && !isPaused) return;
+            
+            const currentTime = elapsedTime;
+            const lapTime = lastLapTime === 0 ? currentTime : currentTime - lastLapTime;
+            lastLapTime = currentTime;
+            
+            // Create lap object
+            const lap = {
+                id: laps.length + 1,
+                time: lapTime,
+                totalTime: currentTime,
+                timestamp: Date.now()
+            };
+            
+            // Add to laps array
+            laps.push(lap);
+            
+            // Update fastest and slowest laps
+            if (fastestLap === null || lapTime < fastestLap.time) {
+                fastestLap = lap;
+            }
+            
+            if (slowestLap === null || lapTime > slowestLap.time) {
+                slowestLap = lap;
+            }
+            
+            // Update display
+            updateLapDisplay();
+            updateLapStats();
+            
+            // Add visual feedback
+            lapBtn.classList.add('pulse');
+            setTimeout(() => {
+                lapBtn.classList.remove('pulse');
+            }, 300);
+        }
+        
+        // Clear all lap times
+        function clearLaps() {
+            laps = [];
+            fastestLap = null;
+            slowestLap = null;
+            updateLapDisplay();
+            updateLapStats();
+            
+            // Add visual feedback
+            clearLapsBtn.classList.add('pulse');
+            setTimeout(() => {
+                clearLapsBtn.classList.remove('pulse');
+            }, 300);
+        }
+        
+        // Update the stopwatch display
+        function updateStopwatch() {
+            if (!isRunning) return;
+            
+            const currentTime = Date.now();
+            const deltaTime = currentTime - lastUpdateTime;
+            lastUpdateTime = currentTime;
+            
+            elapsedTime += deltaTime;
+            
+            // Update display
+            updateDisplay(elapsedTime);
+            
+            // Continue animation loop
+            animationFrameId = requestAnimationFrame(updateStopwatch);
+        }
+        
+        // Format time as HH:MM:SS:MS
+        function formatTime(milliseconds) {
+            // Calculate time components
+            const hours = Math.floor(milliseconds / 3600000);
+            const minutes = Math.floor((milliseconds % 3600000) / 60000);
+            const seconds = Math.floor((milliseconds % 60000) / 1000);
+            const ms = Math.floor(milliseconds % 1000);
+            
+            // Format with leading zeros
+            const formattedHours = hours.toString().padStart(2, '0');
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            const formattedSeconds = seconds.toString().padStart(2, '0');
+            const formattedMilliseconds = ms.toString().padStart(3, '0');
+            
+            return {
+                hours: formattedHours,
+                minutes: formattedMinutes,
+                seconds: formattedSeconds,
+                milliseconds: formattedMilliseconds,
+                fullTime: `${formattedHours}:${formattedMinutes}:${formattedSeconds}.${formattedMilliseconds}`
+            };
+        }
+        
+        // Update the time display
+        function updateDisplay(time) {
+            const formattedTime = formatTime(time);
+            
+            // Update individual elements with animation
+            updateElementWithAnimation(hoursElement, formattedTime.hours);
+            updateElementWithAnimation(minutesElement, formattedTime.minutes);
+            updateElementWithAnimation(secondsElement, formattedTime.seconds);
+            updateElementWithAnimation(millisecondsElement, formattedTime.milliseconds);
+            
+            // Update total time
+            totalTimeElement.textContent = formattedTime.fullTime;
+        }
+        
+        // Update an element with animation
+        function updateElementWithAnimation(element, newValue) {
+            if (element.textContent !== newValue) {
+                element.classList.add('pulse');
+                element.textContent = newValue;
+                setTimeout(() => {
+                    element.classList.remove('pulse');
+                }, 300);
+            }
+        }
+        
+        // Update lap display
+        function updateLapDisplay() {
+            // Clear current display
+            lapTimesElement.innerHTML = '';
+            
+            if (laps.length === 0) {
+                lapTimesElement.innerHTML = '<div class="empty-laps">No lap times recorded yet</div>';
+                return;
+            }
+            
+            // Add laps in reverse order (newest first)
+            const reversedLaps = [...laps].reverse();
+            
+            reversedLaps.forEach(lap => {
+                const lapTime = formatTime(lap.time);
+                const totalTime = formatTime(lap.totalTime);
+                
+                const lapItem = document.createElement('div');
+                lapItem.className = 'lap-item';
+                
+                // Add special classes for fastest and slowest laps
+                if (fastestLap && lap.id === fastestLap.id) {
+                    lapItem.classList.add('fastest');
+                }
+                
+                if (slowestLap && lap.id === slowestLap.id) {
+                    lapItem.classList.add('slowest');
+                }
+                
+                // Calculate difference from previous lap (if any)
+                let differenceText = '';
+                if (lap.id > 1) {
+                    const prevLap = laps[lap.id - 2];
+                    const difference = lap.time - prevLap.time;
+                    const sign = difference >= 0 ? '+' : '';
+                    const diffFormatted = formatTime(Math.abs(difference));
+                    differenceText = `${sign}${diffFormatted.minutes}:${diffFormatted.seconds}.${diffFormatted.milliseconds}`;
+                }
+                
+                lapItem.innerHTML = `
+                    <div class="lap-number">Lap ${lap.id}</div>
+                    <div class="lap-time">${lapTime.hours}:${lapTime.minutes}:${lapTime.seconds}.<span class="milliseconds">${lapTime.milliseconds}</span></div>
+                    <div class="lap-difference">${differenceText || '--:--.---'}</div>
+                `;
+                
+                lapTimesElement.appendChild(lapItem);
+            });
+        }
+        
+        // Update lap statistics
+        function updateLapStats() {
+            // Update lap count
+            lapCountElement.textContent = laps.length;
+            
+            // Update fastest lap
+            if (fastestLap) {
+                const fastestTime = formatTime(fastestLap.time);
+                fastestLapElement.textContent = `${fastestTime.hours}:${fastestTime.minutes}:${fastestTime.seconds}.${fastestTime.milliseconds}`;
+            } else {
+                fastestLapElement.textContent = '--:--:--.---';
+            }
+            
+            // Update slowest lap
+            if (slowestLap) {
+                const slowestTime = formatTime(slowestLap.time);
+                slowestLapElement.textContent = `${slowestTime.hours}:${slowestTime.minutes}:${slowestTime.seconds}.${slowestTime.milliseconds}`;
+            } else {
+                slowestLapElement.textContent = '--:--:--.---';
+            }
+        }
+        
+        // Update button states based on stopwatch state
+        function updateButtonStates() {
+            // Start button - only enabled when not running and not paused
+            startBtn.disabled = isRunning || isPaused;
+            
+            // Pause button - only enabled when running
+            pauseBtn.disabled = !isRunning;
+            
+            // Resume button - only enabled when paused
+            resumeBtn.disabled = !isPaused;
+            
+            // Reset button - always enabled
+            resetBtn.disabled = false;
+            
+            // Lap button - only enabled when running or paused
+            lapBtn.disabled = !isRunning && !isPaused;
+            
+            // Clear laps button - only enabled when there are laps
+            clearLapsBtn.disabled = laps.length === 0;
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Prevent default behavior for spacebar to avoid page scrolling
+            if (e.code === 'Space') {
+                e.preventDefault();
+            }
+            
+            // Spacebar: Start/Pause/Resume
+            if (e.code === 'Space') {
+                if (!isRunning && !isPaused) {
+                    startStopwatch();
+                } else if (isRunning) {
+                    pauseStopwatch();
+                } else if (isPaused) {
+                    resumeStopwatch();
+                }
+            }
+            
+            // L key: Record lap
+            if (e.code === 'KeyL' && (isRunning || isPaused)) {
+                recordLap();
+            }
+            
+            // R key: Reset
+            if (e.code === 'KeyR') {
+                resetStopwatch();
+            }
+            
+            // Escape key: Reset
+            if (e.code === 'Escape') {
+                resetStopwatch();
+            }
+        });
+        
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);</script>
+</body>
+</html>
